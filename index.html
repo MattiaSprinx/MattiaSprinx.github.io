@@ -6,182 +6,222 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <style>
+/* Reset base + box sizing */
+*{ box-sizing:border-box; }
+img{ max-width:100%; height:auto; display:block; }
+
+:root{
+  --teal:#4b858e;
+  --dark:#2b2b29;
+  --bg:#e2e8f0;
+}
+
+/* Layout generale */
 body{
   margin:0;
-  background:#e2e8f0;
+  background:var(--bg);
   font-family: Arial, Helvetica, sans-serif;
+  min-height:100vh;
   display:flex;
   justify-content:center;
   align-items:center;
-  min-height:100vh;
+  padding:16px; /* mobile safe */
 }
 
 .container{
   max-width:1100px;
-  width:95%;
-  background:white;
+  width:100%;
+  background:#fff;
   display:flex;
   flex-direction:column;
   box-shadow:0 20px 40px rgba(0,0,0,.15);
+  border-radius:12px;
+  overflow:hidden;
 }
 
-@media(min-width:900px){
-  .container{
-    flex-direction:row;
-  }
+/* Desktop split */
+@media (min-width:900px){
+  body{ padding:32px; }
+  .container{ flex-direction:row; }
 }
 
-.left{
+.left, .right{
   width:100%;
-  background:#2b2b29;
-  color:white;
-  padding:60px 50px;
+}
+
+/* Colonna sinistra */
+.left{
+  background:var(--dark);
+  color:#fff;
   display:flex;
   flex-direction:column;
   justify-content:space-between;
-  min-height:400px;
+
+  /* padding fluido */
+  padding:clamp(28px, 4vw, 60px) clamp(22px, 4vw, 50px);
+  min-height:auto;
 }
 
-.right{
-  width:100%;
-  padding:60px 60px;
-  background:white;
-}
+.logo{ margin-bottom:clamp(20px, 4vw, 50px); }
+.logo img{ height:clamp(48px, 6vw, 80px); object-fit:contain; }
 
-.logo img{
-  height:80px;
-  object-fit:contain;
-}
-
+/* Titolo fluido */
 h1{
-  font-size:52px;
+  font-size:clamp(34px, 5vw, 52px);
   font-style:italic;
   margin:0;
   line-height:1;
 }
-
-h1 span{
-  color:#4b858e;
-}
+h1 span{ color:var(--teal); }
 
 .subtitle{
-  font-size:24px;
-  opacity:.8;
+  font-size:clamp(16px, 2.4vw, 24px);
+  opacity:.85;
   font-style:italic;
+  margin:12px 0 0;
 }
 
+/* Icon grid */
 .icon-grid{
-  margin-top:50px;
+  margin-top:clamp(24px, 4vw, 50px);
   border-top:1px solid rgba(255,255,255,.15);
-  padding-top:30px;
+  padding-top:clamp(16px, 3vw, 30px);
   display:grid;
   grid-template-columns:repeat(3,1fr);
   gap:10px;
   text-align:center;
 }
-
 .icon-grid span{
-  font-size:9px;
+  font-size:clamp(9px, 1.7vw, 11px);
   letter-spacing:2px;
+  opacity:.8;
+  font-weight:700;
 }
 
-/******** RIGHT SIDE ********/
+/* Su schermi molto piccoli: 1 colonna */
+@media (max-width:420px){
+  .icon-grid{
+    grid-template-columns:1fr;
+    gap:14px;
+  }
+}
+
+/* Colonna destra */
+.right{
+  padding:clamp(26px, 4vw, 60px) clamp(20px, 4vw, 60px);
+  background:#fff;
+}
 
 .tag{
   text-transform:uppercase;
   letter-spacing:4px;
   font-size:12px;
-  font-weight:bold;
-  color:#4b858e;
-  display:flex;
-  align-items:center;
-  gap:6px;
+  font-weight:700;
+  color:var(--teal);
   margin-bottom:10px;
 }
 
 .description{
   color:#555;
-  font-size:17px;
+  font-size:clamp(15px, 2.1vw, 17px);
   font-style:italic;
+  max-width:60ch; /* migliora leggibilità */
 }
 
 .details{
-  margin-top:40px;
+  margin-top:clamp(22px, 4vw, 40px);
 }
 
+/* Righe dettagli: più robuste su mobile */
 .row{
   display:flex;
-  gap:18px;
-  margin-bottom:30px;
+  gap:14px;
+  margin-bottom:22px;
+  align-items:flex-start;
 }
 
 .icon-box{
-  padding:12px;
+  padding:10px 12px;
   border:1px solid #e5e7eb;
   background:#f8fafc;
   border-radius:10px;
+  line-height:1;
+  min-width:44px;        /* icona sempre visibile */
+  height:44px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:18px;
 }
 
 .row-title{
   text-transform:uppercase;
   letter-spacing:2px;
   font-size:11px;
-  font-weight:bold;
+  font-weight:700;
   color:#111;
   margin:0;
 }
 
 .row-text{
-  margin:4px 0 0;
-  font-size:18px;
+  margin:6px 0 0;
+  font-size:clamp(16px, 2.2vw, 18px);
   color:#444;
 }
 
-/******** FOOTER ********/
-
+/* Footer responsive */
 .footer{
   border-top:1px solid #eee;
-  margin-top:30px;
-  padding-top:25px;
+  margin-top:clamp(18px, 3vw, 30px);
+  padding-top:18px;
   display:flex;
   justify-content:space-between;
   align-items:center;
+  gap:14px;
   flex-wrap:wrap;
 }
 
-.footer small{
-  text-transform:uppercase;
-  letter-spacing:3px;
-  color:#888;
-  font-size:10px;
-  font-weight:bold;
-}
-
 .footer img{
-  height:45px;
+  height:clamp(34px, 4vw, 45px);
   object-fit:contain;
 }
 
-/******** BUTTON ********/
-
+/* Pulsante */
 .rsvp-btn{
-  background:#4b858e;
-  color:white;
+  background:var(--teal);
+  color:#fff;
   padding:14px 26px;
   border-radius:30px;
   text-decoration:none;
   font-size:16px;
-  font-weight:bold;
+  font-weight:700;
   letter-spacing:.5px;
   border:2px solid transparent;
   transition:0.25s;
-  display:inline-block;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:170px;
 }
 
 .rsvp-btn:hover{
-  background:white;
-  color:#4b858e;
-  border:2px solid #4b858e;
+  background:#fff;
+  color:var(--teal);
+  border:2px solid var(--teal);
+}
+
+/* Su mobile: bottone full width */
+@media (max-width:520px){
+  .footer{
+    flex-direction:column;
+    align-items:stretch;
+  }
+  .rsvp-btn{
+    width:100%;
+  }
+  .footer img{
+    margin:0 auto;
+  }
 }
 </style>
 </head>
@@ -195,7 +235,7 @@ h1 span{
 
     <div>
       <div class="logo">
-        <img src="sprinxlogo.png" alt="Sprinx Logo">
+        <img src="sprinxlogowhite.png" alt="Sprinx Logo">
       </div>
 
       <div>
@@ -205,22 +245,9 @@ h1 span{
     </div>
 
     <div class="icon-grid">
-
-      <div>
-        <svg width="28" height="28" fill="orange"><circle cx="14" cy="14" r="12"/></svg>
-        <span>SIGNATURE DRINKS</span>
-      </div>
-
-      <div>
-        <svg width="28" height="28" fill="gold"><rect width="24" height="24" x="2" y="2"/></svg>
-        <span>ITALIAN BITES</span>
-      </div>
-
-      <div>
-        <svg width="28" height="28" fill="lightblue"><circle cx="14" cy="14" r="12"/></svg>
-        <span>NETWORKING</span>
-      </div>
-
+      <div><span>SIGNATURE DRINKS</span></div>
+      <div><span>ITALIAN BITES</span></div>
+      <div><span>NETWORKING</span></div>
     </div>
 
   </div>
@@ -237,7 +264,7 @@ h1 span{
       and friends to an exclusive networking aperitivo in true Italian style.
     </p>
 
-    <p style="color:#777;font-size:14px">
+    <p style="color:#777;font-size:14px;max-width:70ch;line-height:1.5">
       Join us at our newly opened Dubai offices for an informal yet refined evening where
       innovation meets Italian hospitality.
     </p>
@@ -265,7 +292,7 @@ h1 span{
         <div>
           <p class="row-title">Location</p>
           <p class="row-text">Sprinx MENA - Sales Office Dubai</p>
-          <p style="color:#777;font-size:14px;margin-top:3px">
+          <p style="color:#777;font-size:14px;margin-top:6px;line-height:1.5">
             Convention Tower, 4th Floor, DWTC<br>Dubai, UAE
           </p>
         </div>
@@ -275,10 +302,7 @@ h1 span{
 
     <!-- FOOTER -->
     <div class="footer">
-
-      <!-- BUTTON HERE -->
-      <a href="#" class="rsvp-btn">Register Now</a>
-
+      <a href="https://sprinx.ai" class="rsvp-btn" target="_blank" rel="noopener">Register Now</a>
       <img src="sprinxlogo.png" alt="Sprinx">
     </div>
 
