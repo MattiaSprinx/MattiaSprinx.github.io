@@ -64,6 +64,7 @@ body{
 
 .logo{ margin-bottom:clamp(20px, 4vw, 50px); }
 .logo img{ height:clamp(48px, 6vw, 80px); object-fit:contain; }
+.logo2 img{ height:clamp(20px, 6vw, 40px); margin-top:20px; object-fit:contain; }
 
 /* Titolo fluido */
 h1{
@@ -80,7 +81,11 @@ h1 span{ color:var(--teal); }
   font-style:italic;
   margin:12px 0 0;
 }
-
+.sprinxtext{
+  font-size:clamp(10px, 2.4vw, 14px);
+  opacity:.85;
+  font-style:italic;
+  margin:80px 0 0;}
 /* Icon grid */
 .icon-grid{
   margin-top:clamp(24px, 4vw, 50px);
@@ -98,13 +103,6 @@ h1 span{ color:var(--teal); }
   font-weight:700;
 }
 
-/* Su schermi molto piccoli: 1 colonna */
-@media (max-width:420px){
-  .icon-grid{
-    grid-template-columns:1fr;
-    gap:14px;
-  }
-}
 
 /* Colonna destra */
 .right{
@@ -235,19 +233,22 @@ h1 span{ color:var(--teal); }
 
     <div>
       <div class="logo">
-        <img src="sprinxlogowhite.png" alt="Sprinx Logo">
+       <a href="https://sprinx.ai" target="_blank" rel="noopener" style="text-decoration:none"><img src="sprinxlogowhite.png" alt="Sprinx Logo"></a>
       </div>
 
       <div>
         <h1>Italian<br><span>Aperitivo</span></h1>
         <p class="subtitle">Dubai Edition</p>
+<p class="sprinxtext">In Partnership with</p> <div class="logo2">
+        <a href="https://dubaihubformadeinitaly.com/" target="_blank" rel="noopener" style="text-decoration:none"><img src="italiacamp.png" alt="italiacamp Logo"></a>
+      </div>
       </div>
     </div>
 
     <div class="icon-grid">
-      <div><span>SIGNATURE DRINKS</span></div>
-      <div><span>ITALIAN BITES</span></div>
       <div><span>NETWORKING</span></div>
+      <div><span>ITALIAN BITES</span></div>
+      <div><span>SIGNATURE DRINKS</span></div>
     </div>
 
   </div>
@@ -265,7 +266,7 @@ h1 span{ color:var(--teal); }
     </p>
 
     <p style="color:#777;font-size:14px;max-width:70ch;line-height:1.5">
-      Join us at our newly opened Dubai offices for an informal yet refined evening where
+      Join us at our newly opened Dubai offices at ItaliaCamp - Hub for Made in Italy, for an informal yet refined evening where
       innovation meets Italian hospitality.
     </p>
 
@@ -283,12 +284,12 @@ h1 span{ color:var(--teal); }
         <div class="icon-box">🕕</div>
         <div>
           <p class="row-title">Time</p>
-          <p class="row-text">6:00 PM onwards</p>
+          <p class="row-text">5:30 - 8:00 PM</p>
         </div>
       </div>
 
       <div class="row">
-        <div class="icon-box">📍</div>
+        <a href="https://maps.app.goo.gl/hdYpu8vobj7CBTxs7" target="_blank" rel="noopener" style="text-decoration:none"><div class="icon-box">📍</div></a>
         <div>
           <p class="row-title">Location</p>
           <p class="row-text">Sprinx MENA - Sales Office Dubai</p>
@@ -302,8 +303,8 @@ h1 span{ color:var(--teal); }
 
     <!-- FOOTER -->
     <div class="footer">
-      <a href="https://sprinx.ai" class="rsvp-btn" target="_blank" rel="noopener">Register Now</a>
-      <img src="sprinxlogo.png" alt="Sprinx">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSebfKUZSXcCp5GHNmJs4NhnSir94wSBPPUQi8j14pzPFuR3rA/viewform?usp=header" class="rsvp-btn" target="_blank" rel="noopener">Join Us</a>
+      <a href="https://www.linkedin.com/company/sprinx-technologies/" target="_blank" rel="noopener"><img src="sprinxlogo.png" alt="Sprinx"></a>
     </div>
 
   </div>
